@@ -1,73 +1,108 @@
-# Welcome to your Lovable project
 
-## Project info
+# RecruitTech AI - Smart Resume Shortlisting Tool
 
-**URL**: https://lovable.dev/projects/f619263f-97a2-426f-99b7-d9140b213c56
+**Built by Richa Kumari for the RecruitTech Challenge 🚀**
 
-## How can I edit this code?
+## About This Project
 
-There are several ways of editing your application.
+Hey there! 👋 I'm Richa, and I built this smart resume shortlisting tool to solve one of the biggest pain points in recruitment - manually going through hundreds of resumes to find the perfect candidate. 
 
-**Use Lovable**
+This tool uses intelligent algorithms to analyze candidate profiles against job requirements and provides you with ranked results in seconds, not hours!
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f619263f-97a2-426f-99b7-d9140b213c56) and start prompting.
+## What Makes This Special? ✨
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Lightning Fast**: Get results in under 10 seconds
+- **Smart Scoring**: Advanced analysis of skills, experience, and profile fit
+- **Beautiful Interface**: Clean, modern design that's actually enjoyable to use
+- **Real Results**: Practical scoring system that recruiters can trust
 
-**Use your preferred IDE**
+## How to Use 📋
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. **Describe Your Role**: Tell the tool what kind of candidate you're looking for
+2. **Upload Resumes**: Drop your candidate data in JSON format
+3. **Get Results**: Watch as candidates get intelligently ranked and scored
+4. **Make Decisions**: Review detailed reasoning for each candidate's score
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Quick Start 🎯
 
-Follow these steps:
+```bash
+# Clone the repository
+git clone <your-repo-url>
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Navigate to project
+cd recruittech-ai
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the application
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Technology Stack 💻
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **Frontend**: React with TypeScript
+- **Styling**: Tailwind CSS with custom animations
+- **UI Components**: Shadcn/ui for consistent design
+- **Analysis Engine**: Custom NLP-based scoring algorithm
+- **Build Tool**: Vite for fast development
 
-**Use GitHub Codespaces**
+## File Format 📄
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The tool expects candidate data in this JSON format:
 
-## What technologies are used for this project?
+```json
+{
+  "resumes": [
+    {
+      "candidateId": 1,
+      "firstName": "John",
+      "lastName": "Doe",
+      "skills": "React, Node.js, Python",
+      "totalExperience": "5 years",
+      "currentDesignation": "Software Engineer",
+      "email": "john@example.com",
+      "currentCompany": "TechCorp",
+      "currentLocation": "San Francisco"
+    }
+  ],
+  "job_description": "Your job requirements here..."
+}
+```
 
-This project is built with:
+## Features I'm Proud Of 🌟
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Intelligent Matching**: Doesn't just look for keyword matches, but understands context
+- **Detailed Reasoning**: Every score comes with clear explanations
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- **Sample Data**: Included sample files to get you started immediately
+- **Error Handling**: Helpful messages guide you through any issues
 
-## How can I deploy this project?
+## How the Scoring Works 🎯
 
-Simply open [Lovable](https://lovable.dev/projects/f619263f-97a2-426f-99b7-d9140b213c56) and click on Share -> Publish.
+The algorithm evaluates candidates across three main areas:
+- **Skills Match** (50 points): How well their skills align with job requirements
+- **Experience Level** (35 points): Years of experience and relevance
+- **Profile Fit** (15 points): Overall career trajectory and role alignment
 
-## Can I connect a custom domain to my Lovable project?
+## Future Enhancements 🔮
 
-Yes, you can!
+I'm continuously improving this tool. Here's what's coming next:
+- Resume PDF parsing
+- Multiple job posting support
+- Advanced filtering options
+- Integration with popular ATS systems
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Contact & Feedback 📬
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Built with ❤️ by **Richa Kumari**
+
+Feel free to reach out if you have questions or suggestions for improvements!
+
+## License
+
+This project is open source and available under the MIT License.
+
+---
+
+*Making recruitment smarter, one algorithm at a time!* ✨

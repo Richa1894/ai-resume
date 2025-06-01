@@ -52,8 +52,8 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
 
     if (file.type !== 'application/json') {
       toast({
-        title: "Invalid File Type",
-        description: "Please upload a JSON file containing candidate data.",
+        title: "Oops! Wrong file type 📄",
+        description: "I need a JSON file with your candidate data. Could you upload that instead?",
         variant: "destructive",
       });
       return;
@@ -67,11 +67,11 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
         
         // Validate the data structure
         if (!data.resumes || !Array.isArray(data.resumes)) {
-          throw new Error("Invalid data structure: 'resumes' array not found");
+          throw new Error("I couldn't find the 'resumes' array in your file. Could you check the format?");
         }
 
         if (data.resumes.length === 0) {
-          throw new Error("No candidate resumes found in the file");
+          throw new Error("Your file seems empty - no candidate resumes found!");
         }
 
         // Validate each resume has required fields
@@ -79,7 +79,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
         for (const resume of data.resumes) {
           for (const field of requiredFields) {
             if (!(field in resume)) {
-              throw new Error(`Missing required field '${field}' in candidate data`);
+              throw new Error(`Missing '${field}' field in candidate data. This helps me analyze better!`);
             }
           }
         }
@@ -94,8 +94,8 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
       } catch (error) {
         console.error('Error parsing JSON file:', error);
         toast({
-          title: "File Parse Error",
-          description: error instanceof Error ? error.message : "Failed to parse the JSON file. Please check the file format.",
+          title: "Having trouble reading your file 😅",
+          description: error instanceof Error ? error.message : "Could you double-check the file format? I've included a sample you can download!",
           variant: "destructive",
         });
       }
@@ -197,15 +197,15 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'candidate_sample.json';
+    a.download = 'candidate_sample_by_richa.json';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 
     toast({
-      title: "🎉 Sample Data Downloaded",
-      description: "A sample JSON file has been downloaded. Perfect for testing the magic!",
+      title: "🎉 Sample data ready!",
+      description: "I've created a sample file for you. Perfect for testing how this works!",
     });
   };
 
@@ -219,11 +219,11 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
           </div>
           
           <h3 className="text-xl font-bold text-gray-900 mb-2">
-            Upload Your Candidate Data
+            Share Your Candidate Data
           </h3>
           <p className="text-gray-600 mb-6 max-w-md mx-auto">
             Drop your JSON file here or click to browse. 
-            We'll process it faster than you can say "perfect match"! ⚡
+            I'll process it faster than you can say "hired"! ⚡
           </p>
           
           <Button 
@@ -231,7 +231,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
             className="mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 px-8 py-3 rounded-xl"
           >
             <Upload className="h-5 w-5 mr-2" />
-            Choose JSON File
+            Choose Your JSON File
           </Button>
           
           <input
@@ -244,16 +244,16 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
         </div>
       </div>
       
-      {/* Enhanced Sample Data Section */}
+      {/* Sample Data Section */}
       <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-2xl border border-purple-100">
         <div className="text-center">
           <div className="flex items-center justify-center space-x-2 mb-3">
             <Sparkles className="h-5 w-5 text-purple-500" />
-            <h4 className="font-semibold text-purple-900">Need Sample Data?</h4>
+            <h4 className="font-semibold text-purple-900">Need sample data to try?</h4>
             <Sparkles className="h-5 w-5 text-purple-500" />
           </div>
           <p className="text-purple-700 mb-4 text-sm">
-            Get started instantly with our pre-made candidate data featuring 3 diverse profiles
+            Get started instantly with sample candidate data I've prepared for you!
           </p>
           <Button 
             variant="outline" 
@@ -266,11 +266,11 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
         </div>
       </div>
 
-      {/* Enhanced Format Guide */}
+      {/* Format Guide */}
       <div className="bg-white/70 backdrop-blur-sm border border-gray-200 rounded-2xl p-6">
         <h4 className="font-semibold text-gray-900 mb-3 flex items-center space-x-2">
           <FileText className="h-4 w-4 text-blue-500" />
-          <span>Expected JSON Format</span>
+          <span>Expected File Format</span>
         </h4>
         <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
           <pre className="text-xs text-gray-700 overflow-x-auto">
@@ -295,7 +295,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
         </div>
         <p className="text-xs text-gray-500 mt-3 flex items-center space-x-1">
           <span>💡</span>
-          <span>Make sure all required fields are included for accurate analysis</span>
+          <span>All the important fields help me give you more accurate results</span>
         </p>
       </div>
     </div>

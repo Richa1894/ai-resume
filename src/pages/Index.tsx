@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Upload, Brain, Users, Trophy, Clock, Sparkles, Target, Zap } from 'lucide-react';
+import { Upload, Brain, Users, Trophy, Clock, Sparkles, Target, Zap, Heart } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import CandidateResults from '@/components/CandidateResults';
 import FileUpload from '@/components/FileUpload';
@@ -63,8 +63,8 @@ const Index = () => {
   const handleAnalyze = async () => {
     if (!jobDescription.trim()) {
       toast({
-        title: "Missing Job Description",
-        description: "Please enter a job description to analyze candidates.",
+        title: "Hold on! 🤔",
+        description: "I need a job description to work my magic. Tell me what you're looking for!",
         variant: "destructive",
       });
       return;
@@ -72,8 +72,8 @@ const Index = () => {
 
     if (!candidateData?.resumes?.length) {
       toast({
-        title: "No Candidate Data",
-        description: "Please upload candidate data to analyze.",
+        title: "Oops! No candidates yet 📂",
+        description: "Please upload some candidate data so I can help you find the perfect match!",
         variant: "destructive",
       });
       return;
@@ -91,14 +91,14 @@ const Index = () => {
       setResults(analysisResults);
       
       toast({
-        title: "Analysis Complete!",
-        description: `Successfully analyzed ${analysisResults.length} candidates.`,
+        title: "🎉 Perfect! Analysis Complete!",
+        description: `I've analyzed ${analysisResults.length} candidates and found some great matches for you!`,
       });
     } catch (error) {
       console.error('Analysis failed:', error);
       toast({
-        title: "Analysis Failed",
-        description: "There was an error analyzing the candidates. Please try again.",
+        title: "Oops! Something went wrong 😅",
+        description: "Don't worry, let's try that again. Sometimes these things happen!",
         variant: "destructive",
       });
     } finally {
@@ -118,39 +118,39 @@ const Index = () => {
     }
     
     toast({
-      title: "🎉 File Uploaded Successfully",
-      description: `Loaded ${data.resumes.length} candidate resumes. Ready to find your perfect match!`,
+      title: "🎉 Awesome! Data uploaded successfully",
+      description: `Got ${data.resumes.length} candidate profiles loaded. Ready to find your perfect hire!`,
     });
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-      {/* Animated Header */}
+      {/* Header */}
       <div className="bg-white/80 backdrop-blur-sm shadow-lg border-b border-indigo-100 sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 p-3 rounded-xl shadow-lg animate-pulse">
+              <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 p-3 rounded-xl shadow-lg">
                 <Brain className="h-7 w-7 text-white" />
               </div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                  RecruitTech AI
+                  RecruitTech Pro
                 </h1>
                 <p className="text-sm text-gray-600 flex items-center space-x-1">
-                  <Sparkles className="h-3 w-3 text-yellow-500" />
-                  <span>Smart Resume Shortlisting</span>
+                  <Heart className="h-3 w-3 text-red-500" />
+                  <span>Built by Richa Kumari</span>
                 </p>
               </div>
             </div>
             <div className="flex items-center space-x-6 text-sm">
               <div className="flex items-center space-x-2 bg-green-50 px-3 py-1 rounded-full">
                 <Trophy className="h-4 w-4 text-green-600" />
-                <span className="text-green-700 font-medium">Challenge Mode</span>
+                <span className="text-green-700 font-medium">RecruitTech Challenge</span>
               </div>
               <div className="flex items-center space-x-2 bg-blue-50 px-3 py-1 rounded-full">
                 <Zap className="h-4 w-4 text-blue-600" />
-                <span className="text-blue-700 font-medium">&lt; 10s Processing</span>
+                <span className="text-blue-700 font-medium">Smart & Fast</span>
               </div>
             </div>
           </div>
@@ -158,22 +158,22 @@ const Index = () => {
       </div>
 
       <div className="container mx-auto px-6 py-8">
-        {/* Enhanced Hero Section */}
+        {/* Hero Section */}
         <div className="text-center mb-12 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-3xl opacity-50 blur-3xl"></div>
           <div className="relative">
             <h2 className="text-5xl font-bold text-gray-900 mb-6 animate-fade-in">
-              Find Your Perfect
-              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"> Candidates</span>
+              Find Your Dream
+              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"> Team Members</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
-              Transform your recruitment process with our AI-powered solution. 
-              Upload resumes, describe your ideal candidate, and watch as our intelligent system 
-              <span className="font-semibold text-indigo-600"> ranks and scores </span>
-              candidates in seconds.
+              Hey there! I'm Richa, and I've built this tool to make your hiring process incredibly efficient. 
+              Just upload your candidate data, describe what you're looking for, and I'll help you 
+              <span className="font-semibold text-indigo-600"> identify the best talent </span>
+              in seconds, not hours.
             </p>
             <div className="flex justify-center space-x-2 mb-8">
-              {["🎯", "⚡", "🧠", "✨"].map((emoji, index) => (
+              {["🎯", "💫", "🚀", "✨"].map((emoji, index) => (
                 <span 
                   key={index} 
                   className="text-3xl animate-bounce" 
@@ -186,7 +186,7 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Enhanced Stats */}
+        {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 bg-gradient-to-br from-blue-50 to-indigo-50">
             <CardContent className="pt-6">
@@ -194,8 +194,8 @@ const Index = () => {
                 <div className="bg-gradient-to-r from-blue-500 to-indigo-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Brain className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg">AI-Powered Analysis</h3>
-                <p className="text-sm text-gray-600 mt-2">Advanced NLP algorithms analyze skills, experience, and cultural fit</p>
+                <h3 className="font-bold text-gray-900 text-lg">Smart Analysis</h3>
+                <p className="text-sm text-gray-600 mt-2">Intelligent algorithms analyze skills, experience, and cultural fit</p>
               </div>
             </CardContent>
           </Card>
@@ -206,8 +206,8 @@ const Index = () => {
                 <div className="bg-gradient-to-r from-green-500 to-emerald-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Clock className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg">Lightning Fast</h3>
-                <p className="text-sm text-gray-600 mt-2">Get comprehensive results in under 10 seconds, not hours</p>
+                <h3 className="font-bold text-gray-900 text-lg">Super Fast</h3>
+                <p className="text-sm text-gray-600 mt-2">Get comprehensive results in under 10 seconds</p>
               </div>
             </CardContent>
           </Card>
@@ -218,14 +218,14 @@ const Index = () => {
                 <div className="bg-gradient-to-r from-purple-500 to-pink-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Target className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg">Precise Matching</h3>
-                <p className="text-sm text-gray-600 mt-2">Smart scoring system identifies the best candidates accurately</p>
+                <h3 className="font-bold text-gray-900 text-lg">Accurate Matching</h3>
+                <p className="text-sm text-gray-600 mt-2">Reliable scoring system that actually makes sense</p>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Enhanced Main Content */}
+        {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {/* Job Description Input */}
           <Card className="hover:shadow-lg transition-all duration-300 border-0 bg-white/70 backdrop-blur-sm">
@@ -234,15 +234,15 @@ const Index = () => {
                 <div className="bg-gradient-to-r from-orange-500 to-red-500 p-2 rounded-lg">
                   <Upload className="h-5 w-5 text-white" />
                 </div>
-                <span>Describe Your Dream Role</span>
+                <span>Tell me about your ideal candidate</span>
               </CardTitle>
-              <p className="text-sm text-gray-600">Tell us about the perfect candidate you're looking for</p>
+              <p className="text-sm text-gray-600">The more specific you are, the better I can help you find the right match!</p>
             </CardHeader>
             <CardContent>
               <Textarea
-                placeholder="✨ Describe your ideal candidate here...
+                placeholder="✨ Describe your perfect candidate here...
 
-Example: We're seeking a Senior Full Stack Developer with 4+ years of experience in React, Node.js, and cloud technologies. The perfect candidate should be passionate about clean code, have experience with AWS or similar platforms, and bonus points for AI/ML background!"
+Example: I'm looking for a Senior Full Stack Developer with 4+ years of experience in React and Node.js. They should be passionate about clean code, have experience with cloud platforms like AWS, and bonus points if they have some AI/ML background. Team player with good communication skills is a must!"
                 value={jobDescription}
                 onChange={(e) => setJobDescription(e.target.value)}
                 className="min-h-[200px] resize-none border-2 border-dashed border-gray-200 focus:border-indigo-300 transition-colors"
@@ -253,22 +253,22 @@ Example: We're seeking a Senior Full Stack Developer with 4+ years of experience
                 </p>
                 <div className="flex items-center space-x-1 text-xs text-indigo-600">
                   <Sparkles className="h-3 w-3" />
-                  <span>Be descriptive for better matches</span>
+                  <span>More details = better matches</span>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Enhanced File Upload */}
+          {/* File Upload */}
           <Card className="hover:shadow-lg transition-all duration-300 border-0 bg-white/70 backdrop-blur-sm">
             <CardHeader className="pb-4">
               <CardTitle className="flex items-center space-x-3 text-xl">
                 <div className="bg-gradient-to-r from-teal-500 to-cyan-500 p-2 rounded-lg">
                   <Users className="h-5 w-5 text-white" />
                 </div>
-                <span>Upload Candidate Resumes</span>
+                <span>Upload your candidate data</span>
               </CardTitle>
-              <p className="text-sm text-gray-600">Upload your candidate data in JSON format</p>
+              <p className="text-sm text-gray-600">Upload your candidate profiles in JSON format</p>
             </CardHeader>
             <CardContent>
               <FileUpload onFileUpload={handleFileUpload} />
@@ -277,7 +277,7 @@ Example: We're seeking a Senior Full Stack Developer with 4+ years of experience
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                     <p className="text-sm text-green-700 font-medium">
-                      🎉 Successfully loaded {candidateData.resumes.length} candidate profiles
+                      🎉 Great! I've loaded {candidateData.resumes.length} candidate profiles
                     </p>
                   </div>
                 </div>
@@ -286,7 +286,7 @@ Example: We're seeking a Senior Full Stack Developer with 4+ years of experience
           </Card>
         </div>
 
-        {/* Enhanced Analyze Button */}
+        {/* Analyze Button */}
         <div className="text-center mb-12">
           <Button
             onClick={handleAnalyze}
@@ -297,19 +297,19 @@ Example: We're seeking a Senior Full Stack Developer with 4+ years of experience
             {isAnalyzing ? (
               <>
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                <span className="animate-pulse">Analyzing Magic in Progress...</span>
+                <span className="animate-pulse">Working my magic...</span>
               </>
             ) : (
               <>
                 <Brain className="h-6 w-6 mr-3" />
-                <span>✨ Analyze & Rank Candidates</span>
+                <span>✨ Find My Perfect Candidates</span>
               </>
             )}
           </Button>
           {(!jobDescription.trim() || !candidateData?.resumes?.length) && (
             <p className="text-sm text-gray-500 mt-3 flex items-center justify-center space-x-1">
               <span>💡</span>
-              <span>Please upload candidate data and enter a job description to get started</span>
+              <span>Please upload candidate data and describe your ideal hire to get started</span>
             </p>
           )}
         </div>
