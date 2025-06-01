@@ -1,7 +1,7 @@
 
 import React, { useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { Upload, FileText } from 'lucide-react';
+import { Upload, FileText, Download, Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface Candidate {
@@ -204,49 +204,76 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
     URL.revokeObjectURL(url);
 
     toast({
-      title: "Sample Data Downloaded",
-      description: "A sample JSON file has been downloaded. You can modify it or use it as-is for testing.",
+      title: "🎉 Sample Data Downloaded",
+      description: "A sample JSON file has been downloaded. Perfect for testing the magic!",
     });
   };
 
   return (
-    <div className="space-y-4">
-      <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 transition-colors">
-        <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-        <h3 className="text-lg font-medium text-gray-900 mb-2">Upload Candidate Data</h3>
-        <p className="text-sm text-gray-600 mb-4">
-          Upload a JSON file containing candidate resumes and job description
-        </p>
-        
-        <Button onClick={handleUploadClick} className="mb-3">
-          <Upload className="h-4 w-4 mr-2" />
-          Choose JSON File
-        </Button>
-        
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept=".json"
-          onChange={handleFileChange}
-          className="hidden"
-        />
-        
-        <div className="mt-4 pt-4 border-t border-gray-200">
-          <p className="text-xs text-gray-500 mb-2">Need a sample file to test with?</p>
+    <div className="space-y-6">
+      <div className="relative group">
+        <div className="border-2 border-dashed border-gray-300 rounded-2xl p-8 text-center hover:border-indigo-400 transition-all duration-300 bg-gradient-to-br from-gray-50 to-blue-50 group-hover:from-blue-50 group-hover:to-indigo-50">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
+            <FileText className="h-16 w-16 text-gray-400 group-hover:text-indigo-500 mx-auto mb-4 transition-colors duration-300" />
+          </div>
+          
+          <h3 className="text-xl font-bold text-gray-900 mb-2">
+            Upload Your Candidate Data
+          </h3>
+          <p className="text-gray-600 mb-6 max-w-md mx-auto">
+            Drop your JSON file here or click to browse. 
+            We'll process it faster than you can say "perfect match"! ⚡
+          </p>
+          
+          <Button 
+            onClick={handleUploadClick} 
+            className="mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 px-8 py-3 rounded-xl"
+          >
+            <Upload className="h-5 w-5 mr-2" />
+            Choose JSON File
+          </Button>
+          
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".json"
+            onChange={handleFileChange}
+            className="hidden"
+          />
+        </div>
+      </div>
+      
+      {/* Enhanced Sample Data Section */}
+      <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-2xl border border-purple-100">
+        <div className="text-center">
+          <div className="flex items-center justify-center space-x-2 mb-3">
+            <Sparkles className="h-5 w-5 text-purple-500" />
+            <h4 className="font-semibold text-purple-900">Need Sample Data?</h4>
+            <Sparkles className="h-5 w-5 text-purple-500" />
+          </div>
+          <p className="text-purple-700 mb-4 text-sm">
+            Get started instantly with our pre-made candidate data featuring 3 diverse profiles
+          </p>
           <Button 
             variant="outline" 
-            size="sm" 
             onClick={createSampleData}
-            className="text-xs"
+            className="border-purple-200 text-purple-700 hover:bg-purple-100 hover:border-purple-300 transition-all duration-300 rounded-xl"
           >
+            <Download className="h-4 w-4 mr-2" />
             Download Sample Data
           </Button>
         </div>
       </div>
 
-      <div className="text-xs text-gray-500 space-y-1">
-        <p><strong>Expected JSON format:</strong></p>
-        <pre className="bg-gray-50 p-2 rounded text-xs overflow-x-auto">
+      {/* Enhanced Format Guide */}
+      <div className="bg-white/70 backdrop-blur-sm border border-gray-200 rounded-2xl p-6">
+        <h4 className="font-semibold text-gray-900 mb-3 flex items-center space-x-2">
+          <FileText className="h-4 w-4 text-blue-500" />
+          <span>Expected JSON Format</span>
+        </h4>
+        <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
+          <pre className="text-xs text-gray-700 overflow-x-auto">
 {`{
   "resumes": [
     {
@@ -255,12 +282,21 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
       "lastName": "Doe",
       "skills": "React, Node.js, Python",
       "totalExperience": "5 years",
+      "currentDesignation": "Software Engineer",
+      "email": "john@example.com",
+      "currentCompany": "TechCorp",
+      "currentLocation": "San Francisco",
       ...
     }
   ],
-  "job_description": "Job requirements..."
+  "job_description": "Your job requirements..."
 }`}
-        </pre>
+          </pre>
+        </div>
+        <p className="text-xs text-gray-500 mt-3 flex items-center space-x-1">
+          <span>💡</span>
+          <span>Make sure all required fields are included for accurate analysis</span>
+        </p>
       </div>
     </div>
   );
